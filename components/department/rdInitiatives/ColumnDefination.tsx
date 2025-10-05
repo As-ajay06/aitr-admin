@@ -28,7 +28,7 @@ export interface RdInitiatives {
   outputs?: string; // patents / publications / outcomes
 }
 
-export const ResearchProjectColumns: ColumnDef<RdInitiatives>[] = [
+export const RndColumns: ColumnDef<RdInitiatives>[] = [
   {
     id: "select",
     header: ({ table }) => (

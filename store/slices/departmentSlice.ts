@@ -1,6 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EventGrantColumns } from "components/department/eventGrant/ColumnDefination";
+
+// import all the deparment columns here
 import { MouColumns, dummyMoUData } from "components/department/mous/CoulmnDefination";
+import { ConsultancyColumns } from "components/department/consultancyProjects/ColumnDefination"
+import { EventGrantColumns } from "components/department/eventGrant/ColumnDefination"
+import { RndColumns } from "components/department/rdInitiatives/ColumnDefination"
+
+
 
 interface DepartmentState {
   tab: string;
@@ -15,10 +21,7 @@ const initialState: DepartmentState = {
 };
 
 // Dummy column/data imports (replace with real ones)
-// todo : call the other columns here
-
-// todo : create slices for other tabs also.
-const departmentSlice = createSlice({
+export const departmentSlice = createSlice({
   name: "department",
   initialState,
   reducers: {
@@ -31,15 +34,15 @@ const departmentSlice = createSlice({
           break;
 
         case "consultancyProjects":
-          state.columns = ConsutancyProjectsColumns;
+          state.columns = ConsultancyColumns;
           break;
 
         case "rndIntiatives":
-          state.columns = RndInitiativesColumns;
+          state.columns = RndColumns;
           break;
 
         case "eventGrantReceived":
-          state.columns = EventGrantRecievedColumns;
+          state.columns = EventGrantColumns;
           break;
 
         default:
