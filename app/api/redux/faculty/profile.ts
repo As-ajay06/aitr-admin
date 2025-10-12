@@ -25,7 +25,7 @@ const initialState: State = {
 
 // ✅ API call
 export const fetchEventGrants = createAsyncThunk("eventGrant/fetch", async () => {
-  const response = await axios.get("http://localhost:3000/api/v1/department/event-grants-received");
+  const response = await axios.get("http://localhost:3000/api/v1/faculty/profiles");
   console.log(response.data)
   // todo : make changes in the line below
   return response.data.eventGrants; // should be an array

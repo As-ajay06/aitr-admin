@@ -29,7 +29,7 @@ import TanstackTable from "components/table/TanstackTable";
 import { fetchEventGrants } from "app/api/redux/department/eventGrantSlice";
 
 import { useEffect } from "react"
-import axios from "node_modules/axios";
+import axios from "axios";
 
 // todo: change this according to tab u are in.
 const FacultyTabDefination = () => {
@@ -39,32 +39,85 @@ const FacultyTabDefination = () => {
 
     // todo : changes to be made here.
     useEffect(() => {
+        const BASE_URL = "http://localhost:3000/api/v1/faculty";
 
-        const BASE_URL = "http://localhost:3000"
-        const fetchData = async () => {
+        const fetchData = async (currentTab: string) => {
             let url = "";
 
-            if (tab === "mou") {
-                url = `${BASE_URL}/api/v1/department/mou`;
-            } else if (tab === "eventGrant") {
-                url = `${BASE_URL}/api/v1/department/event-grants-received`;
-                try {
-                    const res = await axios(url);
-                    const data = res.data;
-                    console.log("this is data" , data.eventGrants);
-                    dispatch(setData(data.eventGrants)); // ✅ update redux with API data
-                } catch (err) {
-                    console.error("Error fetching data:", err);
-                }
+            switch (currentTab) {
+                case "profile":
+                    url = `${BASE_URL}/profiles`;
+                    break;
+                case "facultyAwardAndPublication":
+                    url = `${BASE_URL}/award-recognitions`;
+                    break;
+                case "facultyDevlopmentPrograms":
+                    url = `${BASE_URL}/development-programmes`;
+                    break;
+                case "patentPublished":
+                    url = `${BASE_URL}/patents-published`;
+                    break;
+                case "patentGranted":
+                    url = `${BASE_URL}/patents-granted`;
+                    break;
+                case "professionalCertificationEarned":
+                    url = `${BASE_URL}/professional-certificates`;
+                    break;
+                case "membershipProfessionalBodies":
+                    url = `${BASE_URL}/faculty-membership`;
+                    break;
+                case "phdSupervision":
+                    url = `${BASE_URL}/phd-superviseds`;
+                    break;
+                case "reseachProjectGuided":
+                    url = `${BASE_URL}/research-projects-guided`;
+                    break;
+                case "reseachPaperPublications":
+                    url = `${BASE_URL}/research-papers`;
+                    break;
+                case "invitedTalks":
+                    url = `${BASE_URL}/invited-talks`;
+                    break;
+                case "booksChapterAuthored":
+                    url = `${BASE_URL}/books-authored`;
+                    break;
+                default:
+                    console.warn("Unknown tab:", currentTab);
+                    return;
             }
 
-            if (!url) return;
+            try {
+                const res = await axios.get(url);
+                const responseData = res.data;
+                console.log(responseData);
+
+                // ✅ Dynamically map correct response keys instead of repeating logic
+                if (currentTab === "profile") dispatch(setData(responseData.profiles));
+                if (currentTab === "facultyAwardAndPublication") dispatch(setData(responseData));
+                if (currentTab === "facultyDevlopmentPrograms") dispatch(setData(responseData.programs));
+                if (currentTab === "patentPublished") dispatch(setData(responseData.patents));
+                if (currentTab === "patentGranted") dispatch(setData(responseData.eventGrants));
+                if (currentTab === "professionalCertificationEarned") dispatch(setData(responseData.certificates));
+                if (currentTab === "membershipProfessionalBodies") dispatch(setData(responseData.facultyMembershipData));
+                if (currentTab === "phdSupervision") dispatch(setData(responseData.supervisions));
+                if (currentTab === "reseachProjectGuided") dispatch(setData(responseData.researchProjects));
+                if (currentTab === "reseachPaperPublications") dispatch(setData(responseData.papers));
+                if (currentTab === "invitedTalks") dispatch(setData(responseData.talks));
+                if (currentTab === "booksChapterAuthored") dispatch(setData(responseData.books));
+
+
+            } catch (err) {
+                console.error("Error fetching data:", err);
+            }
         };
 
-        fetchData();
+        // ✅ Actually call it here (NOT inside itself)
+        fetchData(tab);
+
     }, [tab, dispatch]);
 
-    console.log(columns,"fetched", data)
+
+    console.log(columns, columns, "data", data);
 
     return (
         <Row>
@@ -87,17 +140,12 @@ const FacultyTabDefination = () => {
                                     <Dropdown>
                                         <DropdownToggle variant="white">Category</DropdownToggle>
                                         <DropdownMenu>
-                                            <button className="bg-red-200" onClick={() => dispatch(setTab("eventGrant"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Event Grant
-                                                </DropdownItem>
-                                            </button>
                                             <button onClick={() => dispatch(setTab("profile"))}>
                                                 <DropdownItem as="li" href="#" >
                                                     Profile
                                                 </DropdownItem>
                                             </button>
-                                            <button onClick={() => dispatch(setTab("researchPaperPublication"))}>
+                                            <button onClick={() => dispatch(setTab("reseachPaperPublications"))}>
                                                 <DropdownItem as="li" href="#" >
                                                     Reaseach paper publication
                                                 </DropdownItem>

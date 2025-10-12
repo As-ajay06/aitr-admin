@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EventGrantColumns } from "components/department/eventGrant/ColumnDefination";
-import { MouColumns, dummyMoUData } from "components/department/mous/CoulmnDefination";
 
 interface FacultyState {
     tab: string;
@@ -10,8 +8,8 @@ interface FacultyState {
 
 const initialState: FacultyState = {
     tab: "profile",
-    columns: MouColumns,
-    data: dummyMoUData,
+    columns:[],
+    data: [],
 };
 
 // Dummy column/data imports (replace with real ones)
@@ -49,11 +47,11 @@ const faculty = createSlice({
                     state.columns = FacutlyResearchPaperPublication;
                     break;
 
-                case "facultyAwardAndRecognition":
+                case "facultyAwardAndPublication":
                     state.columns = FacultyAwardColumns;
                     break;
 
-                case "facultyDevlopmentProgram":
+                case "facultyDevlopmentPrograms":
                     state.columns = FDPColumns;
                     break;
 
@@ -64,11 +62,11 @@ const faculty = createSlice({
                 case "patentGranted":
                     state.columns = PatentGrantedColumns;
                     break;
-                case "proffesionalCertificateEarned":
+                case "professionalCertificationEarned":
                     state.columns = ProffesionalCertificateEarned ;
                     break;
 
-                case "membershipInProffesionalBodies":
+                case "membershipProfessionalBodies":
                     state.columns = FacultyMembershipColumns;
                     break;
 
@@ -76,11 +74,11 @@ const faculty = createSlice({
                     state.columns = AcedmicQualificationColumn;
                     break;
 
-                case "phdSpervision":
+                case "phdSupervision":
                     state.columns = PhDScholarColumns;
                     break;
 
-                case "researchProjectGuided":
+                case "reseachProjectGuided":
                     state.columns = ReseachProjectGuided;
                     break;
 
@@ -88,7 +86,7 @@ const faculty = createSlice({
                     state.columns = InvitedTalks;
                     break;
 
-                case "booksAndChapterAuthored":
+                case "booksChapterAuthored":
                     state.columns = BookPublicationColumns;
                     break;
 

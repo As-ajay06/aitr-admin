@@ -8,12 +8,12 @@ import DasherTippy from "components/common/DasherTippy";
 import Checkbox from "components/table/Checkbox";
 
 export interface ProfileType {
-  id: string;
+  facultyId: string;
   name: string;
   email: string;
   qualification: string;
   department: string;
-  mobileNumber: string;
+  mobileNumber: number;
   category: string;
   teachingExperience: number;   // assuming years as number
   industrialExperience: number; // assuming years as number
@@ -45,7 +45,7 @@ export const FacultyProfileColumns: ColumnDef<ProfileType>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  { accessorKey: "id", header: "ID" },
+  { accessorKey: "facultyId", header: "ID" },
   { accessorKey: "name", header: "Name" },
   { accessorKey: "email", header: "Email" },
   { accessorKey: "qualification", header: "Qualification" },

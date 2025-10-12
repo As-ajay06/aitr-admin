@@ -35,79 +35,45 @@ const MouTabDefination = () => {
     const { tab, columns, data } = useSelector((state: RootState) => state.department);
     let url;
     useEffect(() => {
-        const BASE_URL = "http://localhost:3000";
-        const fetchData = async (tab:string) => {
-            let url = "";
+    const BASE_URL = "http://localhost:3000";
+    const fetchData = async (currentTab: string) => {
+        let url = "";
 
-            switch (tab) {
+        switch (currentTab) {
+            case "mou":
+                url = `${BASE_URL}/api/v1/department/mous`;
+                break;
+            case "eventGrant":
+                url = `${BASE_URL}/api/v1/department/event-grants-received`;
+                break;
+            case "rndInitiatives":
+                url = `${BASE_URL}/api/v1/department/rnds`;
+                break;
+            case "counsultancyProjects":
+                url = `${BASE_URL}/api/v1/department/consultancies`;
+                break;
+            default:
+                console.warn("Unknown tab:", currentTab);
+                return;
+        }
 
-                case "mou":
+        try {
+            const res = await axios.get(url);
+            const responseData = res.data; // ✅ rename for clarity
 
-                    url = `${BASE_URL}/api/v1/department/mous`;
-                    try {
-                        const res = await axios(url);
-                        const data = await res.data;
-                        console.log("this is data", data);
-                        console.log(data.mous);
-                        dispatch(setData(data.mous)); // ✅ update redux with API data
-                         // ✅ update redux with API data
+            // ✅ Dispatch based on actual key from backend
+            if (currentTab === "mou") dispatch(setData(responseData.mous));
+            if (currentTab === "eventGrant") dispatch(setData(responseData.eventGrants));
+            if (currentTab === "rndInitiatives") dispatch(setData(responseData.rdInitiatives));
+            if (currentTab === "counsultancyProjects") dispatch(setData(responseData.projects));
+        } catch (err) {
+            console.error("Error fetching data:", err);
+        }
+    };
 
-                        if (data) return data;
-                    } catch (err) {
-                        console.error("Error fetching data:", err);
-                    }
-                    break;
+    fetchData(tab); // ✅ THIS WAS MISSING
 
-                case "eventGrant":
-                    url = `${BASE_URL}/api/v1/department/event-grants-received`;
-                    try {
-                        const res = await axios(url);
-                        const data = res.data;
-                        console.log("this is data", data.eventGrants);
-                        dispatch(setData(data.eventGrants)); // ✅ update redux with API data
-
-                        if (data) return data;
-                    } catch (err) {
-                        console.error("Error fetching data:", err);
-                    }
-                    break;
-
-                case "rndInitiatives":
-                    url = `${BASE_URL}/api/v1/department/rnds`;
-                    try {
-                        const res = await axios(url);
-                        const data = res.data;
-                        console.log("this is data", data);
-                        if(data) dispatch(setData(data.rdInitiatives)); // ✅ update redux with API data
-                    } catch (err) {
-                        console.error("Error fetching data:", err);
-                    }
-                    break;
-
-                case "counsultancyProjects":
-                    url = `${BASE_URL}/api/v1/department/consultancies`;
-                    try {
-                        const res = await axios(url);
-                        const data = res.data;
-                        console.log("this is data", data);
-                        if(data) dispatch(setData(data.projects)); // ✅ update redux with API data
-
-                    } catch (err) {
-                        console.error("Error fetching data:", err);
-                    }
-                    break;
-
-
-                default:
-                    console.warn("Unknown tab:", tab);
-                    return;
-            }
-        };
-
-        const responseData = fetchData(tab);;
-        console.log(responseData);
-
-    }, [tab, dispatch]);
+}, [tab, dispatch]);
 
     console.log(columns, "fetched", data)
 

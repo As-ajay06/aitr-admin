@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // import all the deparment columns here
-import { MouColumns, dummyMoUData } from "components/department/mous/CoulmnDefination";
+import { MouColumns } from "components/department/mous/CoulmnDefination";
 import { ConsultancyColumns } from "components/department/consultancyProjects/ColumnDefination"
 import { EventGrantColumns } from "components/department/eventGrant/ColumnDefination"
 import { RndColumns } from "components/department/rdInitiatives/ColumnDefination"
@@ -10,14 +10,14 @@ import { RndColumns } from "components/department/rdInitiatives/ColumnDefination
 
 interface DepartmentState {
   tab: string;
-  columns: any[];
-  data: any[];
+  columns: any;
+  data: any;
 }
 
 const initialState: DepartmentState = {
   tab: "mou",
   columns: MouColumns,
-  data: dummyMoUData,
+  data: [],
 };
 
 // Dummy column/data imports (replace with real ones)
