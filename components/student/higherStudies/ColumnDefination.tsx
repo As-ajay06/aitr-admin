@@ -18,7 +18,7 @@ export interface CourseScholarshipType {
   admissionYear: string;
 }
 
-export const CourseScholarshipColumns: ColumnDef<CourseScholarshipType>[] = [
+export const StudentHigherStudies: ColumnDef<CourseScholarshipType>[] = [
   {
     id: "select",
     header: ({ table }) => (

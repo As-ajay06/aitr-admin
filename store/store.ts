@@ -83,7 +83,7 @@ const store = configureStore({
       facultyresearchPaper: facultyresearchPaper,
       researchPaperGuided: researchPaperGuided,
 
-    institure: instituteReducer,
+    institute: instituteReducer,
       instituteConsultancy: instituteConsultancy,
       instituteEventGrant: instituteEventGrant,
       instituteEventOrganised: instituteEventOrganised,

@@ -34,7 +34,7 @@ export interface StudentCompetitionType {
   achievement: string; // e.g., Participation, Winner, Rank
 }
 
-export const StudentCompetitionColumns: ColumnDef<StudentCompetitionType>[] = [
+export const StudentTechinalNonTechinalColumn: ColumnDef<StudentCompetitionType>[] = [
   {
     id: "select",
     header: ({ table }) => (

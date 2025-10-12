@@ -2,22 +2,37 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { EventGrantColumns } from "components/department/eventGrant/ColumnDefination";
 import { MouColumns, dummyMoUData } from "components/department/mous/CoulmnDefination";
 
-interface DepartmentState {
+interface FacultyState {
     tab: string;
     columns: any[];
     data: any[];
 }
 
-const initialState: DepartmentState = {
+const initialState: FacultyState = {
     tab: "profile",
     columns: MouColumns,
     data: dummyMoUData,
 };
 
 // Dummy column/data imports (replace with real ones)
-// todo : call the other columns here
 
-// todo : create slices for other tabs also.
+import { FacultyProfileColumns } from "components/faculty/profile/CoulmnDefination";
+import { AcedmicQualificationColumn } from "components/faculty/AcdeminQulificationDiscipline/ColumnDefination";
+import { InvitedTalks } from "components/faculty/InvitedTalks/ColumnDefination";
+import { BookPublicationColumns } from "components/faculty/booksChapterAuthored/ColumnDefination";
+import { FacultyAwardColumns } from "components/faculty/facultyAwardAndRecognition/ColumnDefination";
+import { FDPColumns } from "components/faculty/facultyDevlopmentProgram/ColumnDefination";
+import { FacultyMembershipColumns } from "components/faculty/membershipInProfessionalBodies/ColumnDefination";
+import { PatentGrantedColumns } from "components/faculty/patentGranted/ColumnDefination";
+import { PatentColumns } from "components/faculty/patentPublished/ColumnDefination";
+import { PhDScholarColumns } from "components/faculty/phdSpervision/ColumnDefination";
+import { ProffesionalCertificateEarned } from "components/faculty/professionalCertificationEarned/ColumnDefination";
+import { FacutlyResearchPaperPublication } from "components/faculty/researchPaperPublication/ColumnDefination";
+import { ReseachProjectGuided } from "components/faculty/researchProjectGuided/ColumnDefination"
+
+
+
+
 const faculty = createSlice({
     name: "faculty",
     initialState,
@@ -27,42 +42,54 @@ const faculty = createSlice({
 
             switch (action.payload) {
                 case "profile":
-                    state.columns = ProfileColumns;
+                    state.columns = FacultyProfileColumns;
                     break;
 
                 case "reseachPaperPublications":
-                    state.columns = ReseachPaperPublicationsColumns;
+                    state.columns = FacutlyResearchPaperPublication;
                     break;
 
                 case "facultyAwardAndRecognition":
-                    state.columns = FacultyAwardAndRecognitionColumns;
+                    state.columns = FacultyAwardColumns;
+                    break;
+
+                case "facultyDevlopmentProgram":
+                    state.columns = FDPColumns;
                     break;
 
                 case "patentPublished":
-                    state.columns = PatentPublishedColumns;
+                    state.columns = PatentColumns;
                     break;
 
                 case "patentGranted":
                     state.columns = PatentGrantedColumns;
                     break;
                 case "proffesionalCertificateEarned":
-                    state.columns = ProffesionalCertificateEarnedColumns;
+                    state.columns = ProffesionalCertificateEarned ;
                     break;
 
                 case "membershipInProffesionalBodies":
-                    state.columns = MembershipInProffesionalBodiesColumns;
+                    state.columns = FacultyMembershipColumns;
+                    break;
+
+                case "acadmicQualification":
+                    state.columns = AcedmicQualificationColumn;
                     break;
 
                 case "phdSpervision":
-                    state.columns = PhdSpervisionColumns;
+                    state.columns = PhDScholarColumns;
+                    break;
+
+                case "researchProjectGuided":
+                    state.columns = ReseachProjectGuided;
                     break;
 
                 case "invitedTalks":
-                    state.columns = InvitedTalksColumns;
+                    state.columns = InvitedTalks;
                     break;
 
                 case "booksAndChapterAuthored":
-                    state.columns = BooksAndChapterAuthoredColumns;
+                    state.columns = BookPublicationColumns;
                     break;
 
                 default:

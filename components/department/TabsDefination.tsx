@@ -18,6 +18,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "store/store";
 import { setTab, setData } from "../../store/slices/departmentSlice"
+import departmentData from "./departmentData";
 
 //import custom components
 import Flex from "components/common/Flex";
@@ -107,42 +108,91 @@ export const dummyMoUData: MoUType[] = [
 ];
 
 
-import { fetchEventGrants } from "app/api/redux/department/eventGrantSlice";
+// import { fetchEventGrants } from "app/api/redux/department/eventGrantSlice"; todo: i will think about optimizing this letter
 import { useEffect } from "react"
-import axios from "node_modules/axios";
+import axios from "axios";
 
 const MouTabDefination = () => {
 
     const dispatch = useDispatch();
     const { tab, columns, data } = useSelector((state: RootState) => state.department);
-
+    let url;
     useEffect(() => {
-
-        const BASE_URL = "http://localhost:3000"
-        const fetchData = async () => {
+        const BASE_URL = "http://localhost:3000";
+        const fetchData = async (tab:string) => {
             let url = "";
 
-            if (tab === "mou") {
-                url = `${BASE_URL}/api/v1/department/mou`;
-            } else if (tab === "eventGrant") {
-                url = `${BASE_URL}/api/v1/department/event-grants-received`;
-                try {
-                    const res = await axios(url);
-                    const data = res.data;
-                    console.log("this is data" , data.eventGrants);
-                    dispatch(setData(data.eventGrants)); // ✅ update redux with API data
-                } catch (err) {
-                    console.error("Error fetching data:", err);
-                }
-            }
+            switch (tab) {
 
-            if (!url) return;
+                case "mou":
+
+                    url = `${BASE_URL}/api/v1/department/mous`;
+                    try {
+                        const res = await axios(url);
+                        const data = await res.data;
+                        console.log("this is data", data);
+                        console.log(data.mous);
+                        dispatch(setData(data.mous)); // ✅ update redux with API data
+                         // ✅ update redux with API data
+
+                        if (data) return data;
+                    } catch (err) {
+                        console.error("Error fetching data:", err);
+                    }
+                    break;
+
+                case "eventGrant":
+                    url = `${BASE_URL}/api/v1/department/event-grants-received`;
+                    try {
+                        const res = await axios(url);
+                        const data = res.data;
+                        console.log("this is data", data.eventGrants);
+                        dispatch(setData(data.eventGrants)); // ✅ update redux with API data
+
+                        if (data) return data;
+                    } catch (err) {
+                        console.error("Error fetching data:", err);
+                    }
+                    break;
+
+                case "rndInitiatives":
+                    url = `${BASE_URL}/api/v1/department/rnds`;
+                    try {
+                        const res = await axios(url);
+                        const data = res.data;
+                        console.log("this is data", data);
+                        if(data) dispatch(setData(data.rdInitiatives)); // ✅ update redux with API data
+                    } catch (err) {
+                        console.error("Error fetching data:", err);
+                    }
+                    break;
+
+                case "counsultancyProjects":
+                    url = `${BASE_URL}/api/v1/department/consultancies`;
+                    try {
+                        const res = await axios(url);
+                        const data = res.data;
+                        console.log("this is data", data);
+                        if(data) dispatch(setData(data.projects)); // ✅ update redux with API data
+
+                    } catch (err) {
+                        console.error("Error fetching data:", err);
+                    }
+                    break;
+
+
+                default:
+                    console.warn("Unknown tab:", tab);
+                    return;
+            }
         };
 
-        fetchData();
+        const responseData = fetchData(tab);;
+        console.log(responseData);
+
     }, [tab, dispatch]);
 
-    console.log(columns,"fetched", data)
+    console.log(columns, "fetched", data)
 
     return (
         <Row>
@@ -165,7 +215,7 @@ const MouTabDefination = () => {
                                     <Dropdown>
                                         <DropdownToggle variant="white">Category</DropdownToggle>
                                         <DropdownMenu>
-                                            <button onClick={() => dispatch(setTab("eventGrant"))}>
+                                            <button className="bg-red-200" onClick={() => dispatch(setTab("eventGrant"))}>
                                                 <DropdownItem as="li" href="#" >
                                                     Event Grant
                                                 </DropdownItem>
@@ -173,6 +223,16 @@ const MouTabDefination = () => {
                                             <button onClick={() => dispatch(setTab("mou"))}>
                                                 <DropdownItem as="li" href="#" >
                                                     mous
+                                                </DropdownItem>
+                                            </button>
+                                            <button onClick={() => dispatch(setTab("rndInitiatives"))}>
+                                                <DropdownItem as="li" href="#" >
+                                                    RnD initiatives
+                                                </DropdownItem>
+                                            </button>
+                                            <button onClick={() => dispatch(setTab("counsultancyProjects"))}>
+                                                <DropdownItem as="li" href="#" >
+                                                    Consultancy Projects
                                                 </DropdownItem>
                                             </button>
                                             <DropdownItem as="li" href="#">

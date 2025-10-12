@@ -19,7 +19,7 @@ export interface RdInitiatives {
   duration: string;
   description: string;
   funding: string;
-  pdf?: string;
+  fileId?: string;
   projectTitle: string;
   fundingAgency: string;
   principalInvestigator: string;
@@ -60,12 +60,12 @@ export const RndColumns: ColumnDef<RdInitiatives>[] = [
   { accessorKey: "description", header: "Description" },
   { accessorKey: "funding", header: "Funding" },
   {
-    accessorKey: "pdf",
-    header: "Project PDF",
+    accessorKey: "fileId",
+    header: "Project fileId",
     cell: ({ row }) =>
-      row.original.pdf ? (
+      row.original.fileId ? (
         <Link
-          href={row.original.pdf}
+          href={row.original.fileId}
           target="_blank"
           className="text-decoration-underline text-primary"
         >

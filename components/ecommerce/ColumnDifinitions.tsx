@@ -14,7 +14,6 @@ import Checkbox from "components/table/Checkbox";
 
 // this is react table
 
-// todo: have all the columns here this is column header
 
 export const productListColumns: ColumnDef<ProductListType>[] = [
   {

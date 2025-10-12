@@ -9,7 +9,7 @@ import Link from "next/link";
 import DasherTippy from "components/common/DasherTippy";
 import Checkbox from "components/table/Checkbox";
 
-export interface HighestDegreeType {
+export interface AcedmicQualificationType {
   id: string;
   highestDegree: string;
   university: string;
@@ -18,7 +18,7 @@ export interface HighestDegreeType {
   certificateUrl?: string;
 }
 
-export const HighestDegreeColumns: ColumnDef<HighestDegreeType>[] = [
+export const AcedmicQualificationColumn: ColumnDef<AcedmicQualificationType>[] = [
   {
     id: "select",
     header: ({ table }) => (

@@ -52,5 +52,4 @@ const reseachPaper = createSlice({
   },
 });
 
-// todo: make changed here also
 export default reseachPaper.reducer;

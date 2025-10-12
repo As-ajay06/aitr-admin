@@ -3,6 +3,11 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
+
+interface RndInitiatives {
+  onClose: () => void;
+}
+
 interface RndInitiativesData {
   departmentName: string;
   agencyName: string;
@@ -19,7 +24,7 @@ interface RndInitiativesData {
   output: string;
 }
 
-export default function RndInitiatives() {
+export default function RndInitiatives({ onClose }: RndInitiatives) {
   const {
     register,
     handleSubmit,
@@ -49,6 +54,7 @@ export default function RndInitiatives() {
 
       if (!res.ok) throw new Error("Failed to submit form");
       alert("Project submitted successfully!");
+      onClose();
       reset();
     } catch (err) {
       console.error(err);

@@ -9,7 +9,7 @@ import Link from "next/link";
 import DasherTippy from "components/common/DasherTippy";
 import Checkbox from "components/table/Checkbox";
 
-export interface PatentType {
+export interface PatentGrantedType {
   id: string;
   facultyName: string;
   department: string;
@@ -28,7 +28,7 @@ export interface PatentType {
   abstract: string;
 }
 
-export const PatentColumns: ColumnDef<PatentType>[] = [
+export const PatentGrantedColumns: ColumnDef<PatentGrantedType>[] = [
   {
     id: "select",
     header: ({ table }) => (

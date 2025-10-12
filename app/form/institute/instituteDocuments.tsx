@@ -10,7 +10,11 @@ interface InstituteDocument {
   bylawsPdf: FileList;
 }
 
-export default function InstituteDocumentForm() {
+interface InstituteDocumentProps{
+  onClose: () => void;
+}
+
+export default function InstituteDocumentForm({ onClose }: InstituteDocumentProps ) {
   const {
     register,
     handleSubmit,

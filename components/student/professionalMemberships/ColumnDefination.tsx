@@ -15,7 +15,7 @@ export interface MembershipType {
   membershipStatus: string;
 }
 
-export const MembershipColumns: ColumnDef<MembershipType>[] = [
+export const StudentMembershipColumns: ColumnDef<MembershipType>[] = [
   {
     id: "select",
     header: ({ table }) => (

@@ -24,7 +24,7 @@ export interface StudentEventParticipationType {
   coachName: string;
 }
 
-export const StudentEventParticipationColumns: ColumnDef<StudentEventParticipationType>[] = [
+export const StudentExtraCurricular: ColumnDef<StudentEventParticipationType>[] = [
   {
     id: "select",
     header: ({ table }) => (

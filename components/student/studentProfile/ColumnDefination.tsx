@@ -30,7 +30,7 @@ export interface StudentType {
   address: string;
 }
 
-export const StudentColumns: ColumnDef<StudentType>[] = [
+export const StudentProfileColumns: ColumnDef<StudentType>[] = [
   {
     id: "select",
     header: ({ table }) => (

@@ -19,12 +19,12 @@ export interface ConsultancyType {
   duration: string;
   description: string;
   funding: string;
-  pdf?: string;
-  title: string;
-  clientIndustryPartner: string;
+  pdfUrl?: string;
+  titleOfConsultancy: string;
+  clientOrIndustryPartner: string;
   facultyLead: string;
   amountSanctioned: string;
-  supportingDocuments?: string;
+  supportingDocumentsUrl?: string;
 }
 
 export const ConsultancyColumns: ColumnDef<ConsultancyType>[] = [
@@ -59,12 +59,12 @@ export const ConsultancyColumns: ColumnDef<ConsultancyType>[] = [
   { accessorKey: "description", header: "Description" },
   { accessorKey: "funding", header: "Funding" },
   {
-    accessorKey: "pdf",
-    header: "Consultancy PDF",
+    accessorKey: "pdfUrl",
+    header: "Consultancy pdfUrl",
     cell: ({ row }) =>
-      row.original.pdf ? (
+      row.original.pdfUrl ? (
         <Link
-          href={row.original.pdf}
+          href={row.original.pdfUrl}
           target="_blank"
           className="text-decoration-underline text-primary"
         >
@@ -74,17 +74,17 @@ export const ConsultancyColumns: ColumnDef<ConsultancyType>[] = [
         <span className="text-muted">N/A</span>
       ),
   },
-  { accessorKey: "title", header: "Title of Consultancy" },
-  { accessorKey: "clientIndustryPartner", header: "Client / Industry Partner" },
+  { accessorKey: "titleOfConsultancy", header: "Title of Consultancy" },
+  { accessorKey: "clientOrIndustryPartner", header: "Client / Industry Partner" },
   { accessorKey: "facultyLead", header: "Faculty Lead" },
   { accessorKey: "amountSanctioned", header: "Amount Sanctioned" },
   {
     accessorKey: "supportingDocuments",
     header: "Supporting Documents",
     cell: ({ row }) =>
-      row.original.supportingDocuments ? (
+      row.original.supportingDocumentsUrl ? (
         <Link
-          href={row.original.supportingDocuments}
+          href={row.original.supportingDocumentsUrl}
           target="_blank"
           className="text-decoration-underline text-success"
         >

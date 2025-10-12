@@ -8,33 +8,38 @@ import DasherBreadcrumb from "components/common/DasherBreadcrumb";
 import { useSelector } from "react-redux";
 import { RootState } from "store/store";
 // Import your forms
-import MouForm from "app/form/department/MouForm"
-import ConsultancyProjectForm from "app/form/department/ConsultancyProjectsColumns";
-import EventGrantRecieved from "app/form/department/EventGrantRecievedColumns";
-import RndInitiatives from "app/form/department/RndInitiativesColumns";
 
-const DepartmentHeader = () => {
+import InstituteEventOrganised from "app/form/institute/instituteEventOrganised"
+import InstituteConsultancy from "app/form/institute/instituteConsultancy"
+import InstituteDocuments from "app/form/institute/instituteDocuments"
+import InstituteEventGrant from "app/form/institute/instituteEventGrant"
+import InstituteMou from "app/form/institute/instituteMou"
+import InstituteRnd from "app/form/institute/instituteRnd"
 
-  const activeTab = useSelector((state: RootState) => state.department.tab);
+const InstituteHeader = () => {
+
+  const activeTab = useSelector((state: RootState) => state.institute.tab);
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   console.log("active tab is ", activeTab);
-  
+  // todo : add cases for other forms also.
   const renderForm = () => {
     switch (activeTab) {
-      case "mou":
-        return <MouForm onClose={handleClose} />;
-      case "cosultancyProjects":
-        return <ConsultancyProjectForm onClose={handleClose} />;
-      case "eventGrantRecieved":
-        return <EventGrantRecieved onClose={handleClose} />;
-      case "eventGrantRecieved":
-        return <EventGrantRecieved onClose={handleClose} />;
-      case "RndInitiatives":
-        return <RndInitiatives onClose={handleClose} />;
+      case "eventOrganised":
+        return <InstituteEventOrganised onClose={handleClose} />;
+      case "consultancy":
+        return <InstituteConsultancy onClose={handleClose} />;
+      case "instituteDocuments":
+        return <InstituteDocuments onClose={handleClose} />;
+      case "eventGrant":
+        return <InstituteEventGrant onClose={handleClose} />;
+      case "instituteMou":
+        return <InstituteMou onClose={handleClose} />;
+      case "rnd":
+        return <InstituteRnd onClose={handleClose} />;
       default:
         return <p>No form available for this tab.</p>;
     }
@@ -51,7 +56,7 @@ const DepartmentHeader = () => {
             breakpoint="md"
           >
             <div>
-              <h1 className="mb-3 h2">Departments</h1>
+              <h1 className="mb-3 h2">Faculty</h1>
               <DasherBreadcrumb />
             </div>
             <div>
@@ -79,4 +84,4 @@ const DepartmentHeader = () => {
   );
 };
 
-export default DepartmentHeader;
+export default InstituteHeader;

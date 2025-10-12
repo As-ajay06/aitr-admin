@@ -1,23 +1,38 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EventGrantColumns } from "components/department/eventGrant/ColumnDefination";
-import { MouColumns, dummyMoUData } from "components/department/mous/CoulmnDefination";
+import { MouColumns } from "components/department/mous/CoulmnDefination";
 
-interface DepartmentState {
+interface StudentState {
   tab: string;
   columns: any[];
   data: any[];
 }
 
-const initialState: DepartmentState = {
+const initialState: StudentState = {
   tab: "profile",
   columns: MouColumns,
-  data: dummyMoUData,
+  data: [],
 };
 
 // Dummy column/data imports (replace with real ones)
 // todo : call the other columns here
 
-// todo : create slices for other tabs also.
+import {ProjectColumns} from "components/student/capstoneProject/ColumnDefination";
+import {StudentCertificateColumns} from "components/student/cerfication/ColumnDefination";
+import {StudentExtraCurricular} from "components/student/extraCurricular/ColumnDefination";
+import {HackathonColumns} from "components/student/hackathons/ColumnDefination";
+import {StudentHigherStudies} from "components/student/higherStudies/ColumnDefination";
+import {StudentInternshipColumns} from "components/student/internship/ColumnDefination";
+import {StudentPlacementColumns} from "components/student/placement/ColumnDefination";
+import {StudentMembershipColumns} from "components/student/professionalMemberships/ColumnDefination";
+import {StudentResearchPaperColumns} from "components/student/researchPaper/ColumnDefination";
+import {StudentSportsEventColumns} from "components/student/sports/ColumnDefination";
+import {StartupColumns} from "components/student/startups/ColumnDefination";
+import {StudentProfileColumns} from "components/student/studentProfile/ColumnDefination";
+import {StudentTechinalNonTechinalColumn} from "components/student/technicalNonTeachnical/ColumnDefination";
+
+
+
+
 const student = createSlice({
   name: "student",
   initialState,
@@ -27,51 +42,55 @@ const student = createSlice({
 
       switch (action.payload) {
         case "profile":
-          state.columns = MouColumns;
+          state.columns = StudentProfileColumns;
           break;
 
         case "certification":
-          state.columns = CertificationColumns;
+          state.columns = StudentCertificateColumns;
           break;
 
         case "technicalNonTechnical":
-          state.columns = TechnicalNonTechnicalColumns;
+          state.columns = StudentTechinalNonTechinalColumn;
           break;
 
         case "placement":
-          state.columns = PlacementColumns;
+          state.columns = StudentPlacementColumns;
           break;
 
         case "internship":
-          state.columns = InternshipColumns;
+          state.columns = StudentInternshipColumns;
           break;
           
         case "reserachPaper":
-          state.columns = ReserachPaperColumns;
+          state.columns = StudentResearchPaperColumns;
           break;
 
         case "spots":
-          state.columns = SpotsColumns;
+          state.columns = StudentSportsEventColumns;
           break;
 
         case "extraCurricular":
-          state.columns = ExtraCurricularColumns;
+          state.columns = StudentExtraCurricular;
           break;
 
+        case "project/capstone":
+          state.columns = ProjectColumns;
+          break;
+          
         case "startup":
           state.columns = StartupColumns;
           break;
 
         case "hackathons":
-          state.columns = HackathonsColumns;
+          state.columns = HackathonColumns;
           break;
           
         case "higherStudies":
-          state.columns = HigherStudiesColumns;
+          state.columns = StudentHigherStudies;
           break;
 
         case "professionalMembership":
-          state.columns = ProfessionalMembershipColumns;
+          state.columns = StudentMembershipColumns;
           break;
 
         default:

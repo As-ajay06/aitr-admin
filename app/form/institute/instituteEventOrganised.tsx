@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
-interface InstitueEventOrganisedData {
+interface InstituteEventOrganisedData {
   eventName: string;
   typeOfEvent: string;
   agencyName: string;
@@ -16,7 +16,12 @@ interface InstitueEventOrganisedData {
   pdf: FileList;
 }
 
-export default function InstitueEventOrganised() {
+interface InstituteEventOrganisedProp{
+  onClose: () => void;
+}
+
+
+export default function InstituetEventOrganised({ onClose }: InstituteEventOrganisedProp) {
   const {
     register,
     handleSubmit,

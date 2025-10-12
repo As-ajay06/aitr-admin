@@ -7,7 +7,7 @@ import { Button } from "react-bootstrap";
 import DasherTippy from "components/common/DasherTippy";
 import Checkbox from "components/table/Checkbox";
 
-export interface FacultyTalkType {
+export interface FacultyInvitedType {
   id: string;
   facultyName: string;
   titleOfTalk: string;
@@ -18,7 +18,7 @@ export interface FacultyTalkType {
   supportingDoc?: string; // URL to letter or certificate
 }
 
-export const FacultyTalkColumns: ColumnDef<FacultyTalkType>[] = [
+export const InvitedTalks: ColumnDef<FacultyInvitedType>[] = [
   {
     id: "select",
     header: ({ table }) => (

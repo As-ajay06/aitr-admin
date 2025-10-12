@@ -3,6 +3,10 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
+interface ConsultancyFormProps {
+  onClose: () => void;
+}
+
 interface ConsultancyProjectFormData {
   departmentName: string;
   agencyName: string;
@@ -18,7 +22,7 @@ interface ConsultancyProjectFormData {
   supportingDocuments: FileList;
 }
 
-export default function ConsultancyProjectForm() {
+export default function ConsultancyProjectForm({ onClose }: ConsultancyFormProps) {
   const {
     register,
     handleSubmit,
@@ -48,6 +52,7 @@ export default function ConsultancyProjectForm() {
 
       if (!res.ok) throw new Error("Failed to submit form");
       alert("Consultancy project submitted successfully!");
+      onClose();
       reset();
     } catch (err) {
       console.error(err);

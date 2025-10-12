@@ -3,6 +3,10 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
+interface EventGrantRecieved {
+  onClose: () => void;
+}
+
 interface EventGrantRecievedData {
   typeOfEvent: string;
   departmentName: string;
@@ -21,7 +25,7 @@ interface EventGrantRecievedData {
   utilizationSummary: string;
 }
 
-export default function EventGrantRecieved() {
+export default function EventGrantRecieved({ onClose }: EventGrantRecieved) {
   const {
     register,
     handleSubmit,
@@ -51,6 +55,7 @@ export default function EventGrantRecieved() {
 
       if (!res.ok) throw new Error("Failed to submit form");
       alert("Form submitted successfully!");
+      onClose();
       reset();
     } catch (err) {
       console.error(err);

@@ -51,5 +51,4 @@ const profile = createSlice({
   },
 });
 
-// todo: make changed here also
 export default profile.reducer;

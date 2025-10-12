@@ -33,15 +33,15 @@ export const departmentSlice = createSlice({
           state.columns = MouColumns;
           break;
 
-        case "consultancyProjects":
+        case "counsultancyProjects":
           state.columns = ConsultancyColumns;
           break;
 
-        case "rndIntiatives":
+        case "rndInitiatives":
           state.columns = RndColumns;
           break;
 
-        case "eventGrantReceived":
+        case "eventGrant":
           state.columns = EventGrantColumns;
           break;
 

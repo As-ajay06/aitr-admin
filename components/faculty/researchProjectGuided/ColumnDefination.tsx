@@ -15,7 +15,7 @@ export interface StudentProjectType {
   outcome: string; // e.g. Publication, Patent, Prototype
 }
 
-export const StudentProjectColumns: ColumnDef<StudentProjectType>[] = [
+export const ReseachProjectGuided: ColumnDef<StudentProjectType>[] = [
   {
     id: "select",
     header: ({ table }) => (

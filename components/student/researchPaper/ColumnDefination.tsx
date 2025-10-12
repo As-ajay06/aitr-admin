@@ -23,7 +23,7 @@ export interface StudentPaperType {
   facultyGuide: string;
 }
 
-export const StudentPaperColumns: ColumnDef<StudentPaperType>[] = [
+export const StudentResearchPaperColumns: ColumnDef<StudentPaperType>[] = [
   {
     id: "select",
     header: ({ table }) => (

@@ -2,22 +2,34 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { EventGrantColumns } from "components/department/eventGrant/ColumnDefination";
 import { MouColumns, dummyMoUData } from "components/department/mous/CoulmnDefination";
 
-interface DepartmentState {
+interface InstituteState {
   tab: string;
   columns: any[];
   data: any[];
 }
 
-const initialState: DepartmentState = {
+const initialState: InstituteState = {
   tab: "institute",
   columns: MouColumns,
   data: dummyMoUData,
 };
 
 // Dummy column/data imports (replace with real ones)
-// todo : call the other columns here
+// todo : call the other columns herec
 
-// todo : create slices for other tabs also.
+// todo : there is no column in the column defination of institute column
+
+// import  {} from "components/institute/consultancy/ColumnDefination"
+// import  {} from "components/institute/eventGrant/ColumnDefination"
+// import  {} from "components/institute/eventOrganised/ColumnDefination"
+// import  {} from "components/institute/instituteDocuments/ColumnDefination"
+// import  {} from "components/institute/mou/ColumnDefination"
+
+// todo : there is no rd colums in column defination
+
+
+
+
 const institute = createSlice({
   name: "institute",
   initialState,
