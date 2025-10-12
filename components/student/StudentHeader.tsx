@@ -38,29 +38,29 @@ const StudentHeader = () => {
     switch (activeTab) {
       case "extraCurricular":
         return <ExtraCurricular onClose={handleClose} />;
-      case "higherStudies":
+      case "highreStudies":
         return <HigherStudies onClose={handleClose} />;
       case "internship":
         return <Internship onClose={handleClose} />;
-      case "plcament":
+      case "placement":
         return <StudentPlacement onClose={handleClose} />;
       case "professionalMembership":
         return <ProfessionalMembership onClose={handleClose} />;
-      case "projectWork":
+      case "projectWorkCapstoneProjects":
         return <ProjectWork onClose={handleClose} />;
       case "researchPaper":
         return <ResearchPaper onClose={handleClose} />;
       case "sports":
         return <Sports onClose={handleClose} />;
-      case "startups":
+      case "startupsVentures":
         return <Startups onClose={handleClose} />;
-      case "studentCertification":
+      case "certification":
         return <StudentCertification onClose={handleClose} />;
-      case "studentHackathon":
+      case "hackathonInnovationChallages":
         return <StudentHackathon onClose={handleClose} />;
-      case "studentProfile":
+      case "profile":
         return <StudentProfile onClose={handleClose} />;
-      case "technicalNonechnical":
+      case "technicalNontechnicalCompetition":
         return <TechnicaNonTechnical onClose={handleClose} />;
       default:
         return <p>No form available for this tab.</p>;
@@ -78,7 +78,7 @@ const StudentHeader = () => {
             breakpoint="md"
           >
             <div>
-              <h1 className="mb-3 h2">Faculty</h1>
+              <h1 className="mb-3 h2">Student</h1>
               <DasherBreadcrumb />
             </div>
             <div>
