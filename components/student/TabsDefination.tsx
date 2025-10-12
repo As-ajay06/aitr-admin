@@ -40,29 +40,86 @@ const StudentTabDefination = () => {
 
     // todo : changes to be made here.
     useEffect(() => {
+        const BASE_URL = "http://localhost:3000/api/v1/students";
+        let url = "";
 
-        const BASE_URL = "http://localhost:3000"
-        const fetchData = async () => {
-            let url = "";
+        const fetchData = async (currentTab: string) => {
 
-            if (tab === "mou") {
-                url = `${BASE_URL}/api/v1/department/mou`;
-            } else if (tab === "eventGrant") {
-                url = `${BASE_URL}/api/v1/department/event-grants-received`;
-                try {
-                    const res = await axios(url);
-                    const data = res.data;
-                    console.log("this is data" , data.eventGrants);
-                    dispatch(setData(data.eventGrants)); // ✅ update redux with API data
-                } catch (err) {
-                    console.error("Error fetching data:", err);
-                }
+            switch (currentTab) {
+                case "profile":
+                    url = `${BASE_URL}/profiles`;
+                    break;
+                case "certification":
+                    url = `${BASE_URL}/memberships`;
+                    break;
+                case "technicalNontechnicalCompetition":
+                    url = `${BASE_URL}/technicalNontechnical`;
+                    break;
+                case "placement":
+                    url = `${BASE_URL}/placements`;
+                    break;
+                case "internship":
+                    url = `${BASE_URL}/patents-granted`;
+                    break;
+                case "researchPaper":
+                    url = `${BASE_URL}/research-papers`;
+                    break;
+                case "sports":
+                    url = `${BASE_URL}/sports`;
+                    break;
+                case "extraCurricular":
+                    url = `${BASE_URL}/extracurriculars`;
+                    break;
+                case "projectWorkCapstoneProjects":
+                    url = `${BASE_URL}/research-projects-guided`;
+                    break;
+                case "startupsVentures":
+                    url = `${BASE_URL}/startups`;
+                    break;
+                case "hackathonInnovationChallages":
+                    url = `${BASE_URL}/hackathons`;
+                    break;
+                case "highreStudies":
+                    url = `${BASE_URL}/higher-studies`;
+                    break;
+                case "professionalMembership":
+                    url = `${BASE_URL}/memberships`;
+                    break;
+                default:
+                    console.warn("Unknown tab:", currentTab);
+                    return;
             }
 
-            if (!url) return;
+            try {
+                const res = await axios.get(url);
+                const responseData = res.data;
+                console.log(responseData);
+
+                // ✅ Dynamically map correct response keys instead of repeating logic
+                if (currentTab === "profile") dispatch(setData(responseData.profiles));
+                if (currentTab === "certification") dispatch(setData(responseData.membershipCertificates));
+                if (currentTab === "technicalNontechnicalCompetition") dispatch(setData(responseData.technicalData));
+                if (currentTab === "placement") dispatch(setData(responseData.placements));
+                if (currentTab === "internship") dispatch(setData(responseData.eventGrants));
+                if (currentTab === "researchPaper") dispatch(setData(responseData.researchPapers));
+                if (currentTab === "sports") dispatch(setData(responseData.sportsData));
+                if (currentTab === "extraCurricular") dispatch(setData(responseData.extraCurriculars));
+                if (currentTab === "projectWorkCapstoneProjects") dispatch(setData(responseData.researchProjects));
+                if (currentTab === "startupsVentures") dispatch(setData(responseData.startupsData));
+                if (currentTab === "hackathonInnovationChallages") dispatch(setData(responseData.hackathons));
+                if (currentTab === "highreStudies") dispatch(setData(responseData.higherStudies));
+                if (currentTab === "professionalMembership") dispatch(setData(responseData.membershipCertificates));
+
+                // professionalMembership
+
+            } catch (err) {
+                console.error("Error fetching data:", err);
+            }
         };
 
-        fetchData();
+        // ✅ Actually call it here (NOT inside itself)
+        fetchData(tab);
+
     }, [tab, dispatch]);
 
     console.log(columns,"fetched", data)
@@ -138,7 +195,7 @@ const StudentTabDefination = () => {
                                                     Startups/Entrepreneurial Ventures
                                                 </DropdownItem>
                                             </button>
-                                            <button onClick={() => dispatch(setTab("hackathosInnovationChallages"))}>
+                                            <button onClick={() => dispatch(setTab("hackathonInnovationChallages"))}>
                                                 <DropdownItem as="li" href="#" >
                                                     Hacathons/Innovation Challenges
                                                 </DropdownItem>

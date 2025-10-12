@@ -40,9 +40,9 @@ const FacultyHeader = () => {
         return <AcademicQulificationDiscipline onClose={handleClose} />;
       case "booksChapterAuthored":
         return <BooksChapterAuthored onClose={handleClose} />;
-      case "awardsAndRecognition":
+      case "facultyAwardAndPublication":
         return <FacultyAwarsRecognition onClose={handleClose} />;
-      case "devlopmentProgram":
+      case "facultyDevlopmentPrograms":
         return <FacultyDevlopmentProgram onClose={handleClose} />;
       case "patentGranted":
         return <FacultyPatentGranted onClose={handleClose} />;
@@ -58,9 +58,9 @@ const FacultyHeader = () => {
         return <MembershipProffesionalBodies onClose={handleClose} />;
       case "phdSupervision":
         return <PhdSupervision onClose={handleClose} />;
-      case "professionalCertificateEarned":
+      case "professionalCertificationEarned":
         return <ProfessinalCertificateEarned onClose={handleClose} />;
-      case "researchPaperPublication":
+      case "reseachPaperPublications":
         return <ResearchPaperPublication onClose={handleClose} />;
       default:
         return <p>No form available for this tab.</p>;

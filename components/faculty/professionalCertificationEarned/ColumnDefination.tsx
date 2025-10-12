@@ -9,7 +9,7 @@ import Link from "next/link";
 import DasherTippy from "components/common/DasherTippy";
 import Checkbox from "components/table/Checkbox";
 
-export interface FacultyCertificationType {
+export interface FacultyCertificationEarnedType {
   id: string;
   facultyName: string;
   certificationName: string;
@@ -20,7 +20,7 @@ export interface FacultyCertificationType {
   certificateUpload?: string;
 }
 
-export const FacultyCertificationColumns: ColumnDef<FacultyCertificationType>[] = [
+export const ProffesionalCertificateEarned: ColumnDef<FacultyCertificationEarnedType>[] = [
   {
     id: "select",
     header: ({ table }) => (

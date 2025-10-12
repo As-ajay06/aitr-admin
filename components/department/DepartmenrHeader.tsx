@@ -27,13 +27,11 @@ const DepartmentHeader = () => {
     switch (activeTab) {
       case "mou":
         return <MouForm onClose={handleClose} />;
-      case "cosultancyProjects":
+      case "counsultancyProjects":
         return <ConsultancyProjectForm onClose={handleClose} />;
-      case "eventGrantRecieved":
+      case "eventGrant":
         return <EventGrantRecieved onClose={handleClose} />;
-      case "eventGrantRecieved":
-        return <EventGrantRecieved onClose={handleClose} />;
-      case "RndInitiatives":
+      case "rndInitiatives":
         return <RndInitiatives onClose={handleClose} />;
       default:
         return <p>No form available for this tab.</p>;
