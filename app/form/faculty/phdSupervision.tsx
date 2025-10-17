@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface FacultyPhDSupervisionData {
   facultyName: string;
@@ -25,7 +26,8 @@ export default function FacultyPhDSupervisionForm() {
   const onSubmit = async (data: FacultyPhDSupervisionData) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/faculty/phd-supervision", {
+      
+      const res = await fetch(`${BACKEND_URL}/faculty/phd-supervised`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface StudentTechinalNonTechnicalData {
   id: string;
@@ -52,7 +53,7 @@ export default function StudentTechinalNonTechnicalForm() {
         }
       });
 
-      const res = await fetch("/api/student/competition", {
+      const res = await fetch(`${BACKEND_URL}/studnet/technicalNontechnical`, {
         method: "POST",
         body: formData,
       });

@@ -2,6 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface InstituteEventGrantProps {
   onClose: () => void;
@@ -24,7 +25,7 @@ const InstituteEventGrant = ({ onClose }: InstituteEventGrantProps) => {
   const onSubmit = async (data: InstituteEventGrantValues) => {
     try {
       console.log(data);
-      const res = await fetch("/api/event-agency", {
+      const res = await fetch(`${BACKEND_URL}/institute/event-grant`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

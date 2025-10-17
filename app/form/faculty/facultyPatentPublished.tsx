@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface PatentPublishedData {
   id: string;
@@ -44,8 +45,8 @@ export default function PatentPublishedForm() {
           formData.append(key, value as string);
         }
       });
-
-      const res = await fetch("/api/patents/submit", {
+      
+      const res = await fetch(`${BACKEND_URL}/faculty/patent-published`, {
         method: "POST",
         body: formData,
       });

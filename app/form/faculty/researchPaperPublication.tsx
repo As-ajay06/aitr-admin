@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface ResearchPublicationFormData {
   id: string;
@@ -41,8 +42,8 @@ export default function ResearchPublicationForm() {
           formData.append(key, value as string);
         }
       });
-
-      const res = await fetch("/api/faculty/publication", {
+      
+      const res = await fetch(`${BACKEND_URL}/faculty/research-paper`, {
         method: "POST",
         body: formData,
       });

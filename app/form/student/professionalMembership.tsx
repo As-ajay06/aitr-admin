@@ -23,7 +23,8 @@ export default function ProfessionalMembershipForm() {
   const onSubmit = async (data: ProfessionalMembershipData) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/professional-membership", {
+      // todo : complete this endpoint
+      const res = await fetch(`{BACKEND_URL}/student/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

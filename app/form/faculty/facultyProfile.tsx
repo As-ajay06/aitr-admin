@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface FacultyProfileData {
   id: string;
@@ -29,7 +30,8 @@ export default function FacultyProfileForm() {
   const onSubmit = async (data: FacultyProfileData) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/faculty/profile", {
+      
+      const res = await fetch(`${BACKEND_URL}/faculty/profile`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

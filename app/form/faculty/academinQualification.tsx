@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface FacultyEducationQualificationData {
   highestDegreeEarned: string;
@@ -33,8 +34,8 @@ export default function FacultyEducationQualificationForm() {
           formData.append(key, value as string);
         }
       });
-
-      const res = await fetch("/api/faculty/education-qualification", {
+      
+      const res = await fetch(`${BACKEND_URL}/faculty/academic-qualification`, {
         method: "POST",
         body: formData,
       });

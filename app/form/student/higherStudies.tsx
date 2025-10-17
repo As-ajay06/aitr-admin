@@ -26,7 +26,7 @@ export default function HigherStudiesForm() {
   const onSubmit = async (data: HigherStudiesData) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/course-scholarship", {
+      const res = await fetch(`{BACKEND_URL}/student/higher-study`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

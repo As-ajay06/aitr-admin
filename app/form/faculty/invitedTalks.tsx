@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface FacultyTalkEngagementData {
   facultyName: string;
@@ -35,8 +36,8 @@ export default function FacultyTalkEngagementForm() {
           formData.append(key, value as string);
         }
       });
-
-      const res = await fetch("/api/faculty/talk-engagement", {
+      
+      const res = await fetch(`${BACKEND_URL}/faculty/invited-talks`, {
         method: "POST",
         body: formData,
       });

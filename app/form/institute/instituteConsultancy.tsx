@@ -2,6 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface InstituteConsultancyProps {
   onClose: () => void;
@@ -22,7 +23,7 @@ const InstituteConsultancy = ({ onClose }: InstituteConsultancyProps) => {
   const onSubmit = async (data: InstituteConsultancyValues) => {
     try {
       console.log(data);
-      const res = await fetch("/api/agency", {
+      const res = await fetch(`${BACKEND_URL}/insitute/consultancy`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

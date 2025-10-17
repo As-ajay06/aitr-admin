@@ -1,6 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface MouFormProps {
   onClose: () => void;
@@ -17,8 +18,9 @@ const MouForm = ({ onClose }: MouFormProps) => {
 
   const onSubmit = async (data: MouFormValues) => {
     try {
-        console.log(data);
-      const res = await fetch("/api/mou", {
+      console.log(data);
+
+      const res = await fetch(`${BACKEND_URL}/department/mou`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

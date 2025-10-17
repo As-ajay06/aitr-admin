@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface ExtraCurricular {
   id: string;
@@ -41,8 +42,8 @@ export default function ExtraCurricularForm() {
           formData.append(key, value as string);
         }
       });
-
-      const res = await fetch("/api/student/event-participation", {
+      
+      const res = await fetch(`{BACKEND_URL}/student/extracurricular`, {
         method: "POST",
         body: formData,
       });

@@ -45,8 +45,8 @@ export default function StudentInternshipForm() {
           formData.append(key, value as string);
         }
       });
-
-      const res = await fetch("/api/student/internship", {
+      // todo : complete this endpoint
+      const res = await fetch(`{BACKEND_URL}/student/`, {
         method: "POST",
         body: formData,
       });

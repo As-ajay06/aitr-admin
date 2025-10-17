@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface BookChapterDetailsData {
   title: string;
@@ -24,7 +25,7 @@ export default function BookChapterDetailsForm() {
   const onSubmit = async (data: BookChapterDetailsData) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/book-chapter-details", {
+      const res = await fetch(`${BACKEND_URL}/faculty/book-authored`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

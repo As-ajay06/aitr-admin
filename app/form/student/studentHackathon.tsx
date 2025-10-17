@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface HackathonData {
   hackathonName: string;
@@ -32,7 +33,7 @@ export default function HackathonForm() {
   const onSubmit = async (data: HackathonData) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/hackathon", {
+      const res = await fetch(`${BACKEND_URL}/studnet/hackathon`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

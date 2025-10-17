@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface FacultyDevelopmentProgramData {
   id: string;
@@ -42,7 +43,7 @@ export default function FacultyDevelopmentProgramForm() {
         }
       });
 
-      const res = await fetch("/api/fdp/submit", {
+      const res = await fetch(`${BACKEND_URL}/faculty/devlopment-programme`, {
         method: "POST",
         body: formData,
       });

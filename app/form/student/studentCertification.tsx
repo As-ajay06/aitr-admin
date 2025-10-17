@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface StudentCertificateData {
   id: string;
@@ -44,8 +45,7 @@ export default function StudentCertificateForm() {
           formData.append(key, value as string);
         }
       });
-
-      const res = await fetch("/api/student/certificates", {
+      const res = await fetch(`${BACKEND_URL}/studnet/membership`, {
         method: "POST",
         body: formData,
       });

@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface InstituteEventOrganisedData {
   eventName: string;
@@ -27,11 +28,11 @@ export default function InstituetEventOrganised({ onClose }: InstituteEventOrgan
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<InstitueEventOrganisedData>();
+  } = useForm<InstituteEventOrganisedData>();
 
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (data: InstitueEventOrganisedData) => {
+  const onSubmit = async (data: InstituteEventOrganisedData) => {
     setLoading(true);
     try {
       const formData = new FormData();
@@ -42,8 +43,7 @@ export default function InstituetEventOrganised({ onClose }: InstituteEventOrgan
           formData.append(key, value as string);
         }
       });
-
-      const res = await fetch("/api/department/event-agency", {
+      const res = await fetch(`${BACKEND_URL}/faculty/event-organised`, {
         method: "POST",
         body: formData,
       });

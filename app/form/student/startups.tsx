@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface StartupInfo {
   startupName: string;
@@ -24,7 +25,7 @@ export default function StartupInfoForm() {
   const onSubmit = async (data: StartupInfo) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/startup/info", {
+      const res = await fetch(`${BACKEND_URL}/studnet/startup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

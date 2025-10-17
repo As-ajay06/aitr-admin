@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 
 interface RndInitiatives {
@@ -47,7 +48,7 @@ export default function RndInitiatives({ onClose }: RndInitiatives) {
         }
       });
 
-      const res = await fetch("/api/department/research-project", {
+      const res = await fetch(`${BACKEND_URL}/department/rnd`, {
         method: "POST",
         body: formData,
       });

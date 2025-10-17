@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface EventGrantRecieved {
   onClose: () => void;
@@ -47,8 +48,8 @@ export default function EventGrantRecieved({ onClose }: EventGrantRecieved) {
           formData.append(key, value as string);
         }
       });
-
-      const res = await fetch("/api/department/funded-event", {
+    
+      const res = await fetch(`${BACKEND_URL}/department/event-grrant-received`, {
         method: "POST",
         body: formData,
       });

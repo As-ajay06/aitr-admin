@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface StudentResearchPaperData {
   studentName: string;
@@ -40,7 +41,7 @@ export default function StudentResearchPaperForm() {
         }
       });
 
-      const res = await fetch("/api/student/publication", {
+      const res = await fetch(`${BACKEND_URL}/studnet/research-paper`, {
         method: "POST",
         body: formData,
       });

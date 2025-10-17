@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface InstituteDocument {
   aicteAffiliationPdf: FileList;
@@ -34,7 +35,7 @@ export default function InstituteDocumentForm({ onClose }: InstituteDocumentProp
       formData.append("societyPdf", data.societyPdf[0]);
       formData.append("bylawsPdf", data.bylawsPdf[0]);
 
-      const res = await fetch("/api/department/documents", {
+      const res = await fetch(`${BACKEND_URL}/institute/document`, {
         method: "POST",
         body: formData,
       });

@@ -40,7 +40,7 @@ export default function StudentPlacementForm() {
         }
       });
 
-      const res = await fetch("/api/student/placement", {
+      const res = await fetch(`{BACKEND_URL}/student/placement`, {
         method: "POST",
         body: formData,
       });

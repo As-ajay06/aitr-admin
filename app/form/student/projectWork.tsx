@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { BACKEND_URL } from "config";
 
 interface StudentProjectData {
   projectTitle: string;
@@ -25,7 +26,7 @@ export default function StudentProjectForm() {
   const onSubmit = async (data: StudentProjectData) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/student/project", {
+      const res = await fetch(`${BACKEND_URL}/student/project`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
