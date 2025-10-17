@@ -22,6 +22,7 @@
     "axios": "^1.12.2",
     "bootstrap": "^5.3.7",
     "bootstrap-icons": "^1.13.1",
+    "dayjs": "^1.11.18",
     "next": "^15.3.5",
     "quill": "^2.0.3",
     "react": "^18.3.1",

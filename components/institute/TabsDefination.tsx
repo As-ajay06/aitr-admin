@@ -32,7 +32,7 @@ import { useEffect } from "react"
 import axios from "node_modules/axios";
 
 // todo: change this according to tab u are in.
-const FacultyTabDefination = () => {
+const InstituteTabsDefination = () => {
 
     const dispatch = useDispatch();
     const { tab, columns, data } = useSelector((state: RootState) => state.institute);
@@ -151,4 +151,4 @@ const FacultyTabDefination = () => {
 
 };
 
-export default FacultyTabDefination;
+export default InstituteTabsDefination;

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { EventGrantColumns } from "components/department/eventGrant/ColumnDefination";
-import { MouColumns, dummyMoUData } from "components/department/mous/CoulmnDefination";
+import { MouColumns } from "components/department/mous/CoulmnDefination";
 
 interface InstituteState {
   tab: string;
@@ -11,7 +11,7 @@ interface InstituteState {
 const initialState: InstituteState = {
   tab: "institute",
   columns: MouColumns,
-  data: dummyMoUData,
+  data: [],
 };
 
 // Dummy column/data imports (replace with real ones)

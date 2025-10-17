@@ -56,7 +56,7 @@ const InstituteHeader = () => {
             breakpoint="md"
           >
             <div>
-              <h1 className="mb-3 h2">Faculty</h1>
+              <h1 className="mb-3 h2">Institue</h1>
               <DasherBreadcrumb />
             </div>
             <div>

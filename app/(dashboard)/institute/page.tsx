@@ -5,6 +5,8 @@ import { Metadata } from "next";
 //import custom components
 import ProductListing from "components/ecommerce/ProductListing";
 import EcommerceHeader from "components/ecommerce/EcommerceHeader";
+import InstituteHeader from "components/institute/InstituteHeader";
+import InstituteTabsDefination from "components/institute/TabsDefination";
 
 export const metadata: Metadata = {
   title: "Products | Dasher - Responsive Bootstrap 5 Admin Dashboard",
@@ -14,8 +16,8 @@ export const metadata: Metadata = {
 const Institute = () => {
   return (
     <Fragment>
-      <EcommerceHeader />
-      <ProductListing />
+      <InstituteHeader />
+      <InstituteTabsDefination />
     </Fragment>
   );
 };

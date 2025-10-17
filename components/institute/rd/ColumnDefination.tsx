@@ -11,12 +11,8 @@ import DasherTippy from "components/common/DasherTippy";
 import Checkbox from "components/table/Checkbox";
 
 // ✅ Interface for data (optional but recommended)
-export interface EventOrganised {
-    eventName: string;
-    typeOfTheEvent: string;
+export interface rndListColumn {
     agencyName: string;
-    category: string;
-    numberOfParticipants: number;
     date: string;
     duration: string;
     description: string;
@@ -25,7 +21,7 @@ export interface EventOrganised {
 }
 
 // ✅ Columns
-export const EventOrganisedColumns: ColumnDef<EventOrganised>[] = [
+export const RnDColumn: ColumnDef<rndListColumn>[] = [
     {
         id: "select",
         header: ({ table }) => {
@@ -57,12 +53,8 @@ export const EventOrganisedColumns: ColumnDef<EventOrganised>[] = [
         header: "Event name",
     },
     {
-        accessorKey: "typeOfEvent",
-        header: "Type of Event",
-    },
-    {
-        accessorKey: "agencyName",
-        header: "Agency Name",
+        accessorKey: "titleOfEvent",
+        header: "Title of Event",
     },
     {
         accessorKey: "category",
