@@ -36,6 +36,10 @@ const InstituteTabsDefination = () => {
     const dispatch = useDispatch();
     const { tab, columns, data } = useSelector((state: RootState) => state.institute);
 
+    const handleDownload = () => {
+        console.log("downloading")
+    }
+
     
     // todo : changes to be made here.
     useEffect(() => {
@@ -114,44 +118,32 @@ const InstituteTabsDefination = () => {
                                         <Button variant="white">More Filter</Button>
                                     </div>
                                     <Dropdown>
-                                        <DropdownToggle variant="white">Category</DropdownToggle>
+                                        <DropdownToggle variant="white">Select Cloumn</DropdownToggle>
                                         <DropdownMenu>
-                                            <button className="bg-red-200" onClick={() => dispatch(setTab("mou"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("mou"))}>
                                                     Mou
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("consultancy"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("consultancy"))} >
                                                     Consultancy
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("rnd"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("rnd"))}>
                                                     R&D
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("eventGrant"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("eventGrant"))} >
                                                     Event Grant
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("eventOrganised"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("eventOrganised"))}>
                                                     Event organised
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("instituteDocuments"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("instituteDocuments"))} >
                                                     Instiute Documents
                                                 </DropdownItem>
-                                            </button>
                                         </DropdownMenu>
                                     </Dropdown>
                                     <Dropdown>
                                         <DropdownToggle variant="white">Export</DropdownToggle>
                                         <DropdownMenu>
-                                            <DropdownItem as="li" href="#">
+                                            <DropdownItem as="li" href="#" onClick={handleDownload}>
                                                 Download as CSV
                                             </DropdownItem>
                                             <DropdownItem as="li" href="#">

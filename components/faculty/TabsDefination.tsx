@@ -140,66 +140,42 @@ const FacultyTabDefination = () => {
                                     <Dropdown>
                                         <DropdownToggle variant="white">Category</DropdownToggle>
                                         <DropdownMenu>
-                                            <button onClick={() => dispatch(setTab("profile"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("profile"))} >
                                                     Profile
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("reseachPaperPublications"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("reseachPaperPublications"))} >
                                                     Reaseach paper publication
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("facultyAwardAndPublication"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("facultyAwardAndPublication"))} >
                                                     Awards and Publication
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("facultyDevlopmentPrograms"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("facultyDevlopmentPrograms"))}>
                                                     Devlopment Programs
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("patentPublished"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("patentPublished"))} >
                                                     Patent Published
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("patentGranted"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("patentGranted"))}>
                                                     Patent Granted
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("professionalCertificationEarned"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("professionalCertificationEarned"))} >
                                                     Professional certificate Earned
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("membershipProfessionalBodies"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("membershipProfessionalBodies"))} >
                                                     Membership professional bodies
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("phdSupervision"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("phdSupervision"))} >
                                                     PhD Supervision/Guided
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("reseachProjectGuided"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("reseachProjectGuided"))} >
                                                     Research project guided
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("invitedTalks"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("invitedTalks"))}>
                                                     Invited talks
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("booksChapterAuthored"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("booksChapterAuthored"))}>
                                                     Books/Chapter Authored
                                                 </DropdownItem>
-                                            </button>
                                         </DropdownMenu>
                                     </Dropdown>
                                     <Dropdown>

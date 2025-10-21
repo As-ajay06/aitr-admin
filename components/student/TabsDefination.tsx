@@ -122,7 +122,7 @@ const StudentTabDefination = () => {
 
     }, [tab, dispatch]);
 
-    console.log(columns,"fetched", data)
+    console.log(columns, "fetched", data)
 
     return (
         <Row>
@@ -145,71 +145,45 @@ const StudentTabDefination = () => {
                                     <Dropdown>
                                         <DropdownToggle variant="white">Category</DropdownToggle>
                                         <DropdownMenu>
-                                            <button className="bg-red-200" onClick={() => dispatch(setTab("profile"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Profile
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("certification"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Certification
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("technicalNontechnicalCompetition"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Technical/Non-technical competition
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("placement"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Placement
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("internship"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Internship
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("researchPaper"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Research Paper
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("sports"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Sports
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("extraCurricular"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Extra Curricular
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("projectWorkCapstoneProjects"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Projects work / Capstone Projects
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("startupsVentures"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Startups/Entrepreneurial Ventures
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("hackathonInnovationChallages"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Hacathons/Innovation Challenges
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("highreStudies"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Higher Studies
-                                                </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("professionalMembership"))}>
-                                                <DropdownItem as="li" href="#" >
-                                                    Professional Membership
-                                                </DropdownItem>
-                                            </button>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("profile"))}>
+                                                Profile
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("certification"))} >
+                                                Certification
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("technicalNontechnicalCompetition"))} >
+                                                Technical/Non-technical competition
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("placement"))}>
+                                                Placement
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("internship"))}>
+                                                Internship
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("researchPaper"))} >
+                                                Research Paper
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("sports"))}>
+                                                Sports
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("extraCurricular"))} >
+                                                Extra Curricular
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("projectWorkCapstoneProjects"))} >
+                                                Projects work / Capstone Projects
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("startupsVentures"))} >
+                                                Startups/Entrepreneurial Ventures
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("hackathonInnovationChallages"))} >
+                                                Hacathons/Innovation Challenges
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("highreStudies"))} >
+                                                Higher Studies
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("professionalMembership"))} >
+                                                Professional Membership
+                                            </DropdownItem>
                                         </DropdownMenu>
                                     </Dropdown>
                                     <Dropdown>

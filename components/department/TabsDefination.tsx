@@ -97,29 +97,18 @@ const MouTabDefination = () => {
                                     <Dropdown>
                                         <DropdownToggle variant="white">Category</DropdownToggle>
                                         <DropdownMenu>
-                                            <button className="bg-red-200" onClick={() => dispatch(setTab("eventGrant"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("eventGrant"))}>
                                                     Event Grant
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("mou"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("mou"))} >
                                                     mous
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("rndInitiatives"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("rndInitiatives"))} >
                                                     RnD initiatives
                                                 </DropdownItem>
-                                            </button>
-                                            <button onClick={() => dispatch(setTab("counsultancyProjects"))}>
-                                                <DropdownItem as="li" href="#" >
+                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("counsultancyProjects"))}>
                                                     Consultancy Projects
                                                 </DropdownItem>
-                                            </button>
-                                            <DropdownItem as="li" href="#">
-                                                Men&apos;s Fashion
-                                            </DropdownItem>
                                         </DropdownMenu>
                                     </Dropdown>
                                     <Dropdown>
