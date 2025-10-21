@@ -30,51 +30,98 @@ import axios from "axios";
 
 const MouTabDefination = () => {
 
+
+
     const dispatch = useDispatch();
     const { tab, columns, data } = useSelector((state: RootState) => state.department);
     let url;
     useEffect(() => {
-    const BASE_URL = "http://localhost:3000";
-    const fetchData = async (currentTab: string) => {
-        let url = "";
+        const BASE_URL = "http://localhost:3000";
+        const fetchData = async (currentTab: string) => {
+            let url = "";
 
-        switch (currentTab) {
-            case "mou":
-                url = `${BASE_URL}/api/v1/department/mous`;
-                break;
-            case "eventGrant":
-                url = `${BASE_URL}/api/v1/department/event-grants-received`;
-                break;
-            case "rndInitiatives":
-                url = `${BASE_URL}/api/v1/department/rnds`;
-                break;
-            case "counsultancyProjects":
-                url = `${BASE_URL}/api/v1/department/consultancies`;
-                break;
-            default:
-                console.warn("Unknown tab:", currentTab);
-                return;
-        }
+            switch (currentTab) {
+                case "mou":
+                    url = `${BASE_URL}/api/v1/department/mous`;
+                    break;
+                case "eventGrant":
+                    url = `${BASE_URL}/api/v1/department/event-grants-received`;
+                    break;
+                case "rndInitiatives":
+                    url = `${BASE_URL}/api/v1/department/rnds`;
+                    break;
+                case "counsultancyProjects":
+                    url = `${BASE_URL}/api/v1/department/consultancies`;
+                    break;
+                default:
+                    console.warn("Unknown tab:", currentTab);
+                    return;
+            }
 
-        try {
-            const res = await axios.get(url);
-            const responseData = res.data; // ✅ rename for clarity
+            try {
+                const res = await axios.get(url);
+                const responseData = res.data; // ✅ rename for clarity
 
-            // ✅ Dispatch based on actual key from backend
-            if (currentTab === "mou") dispatch(setData(responseData.mous));
-            if (currentTab === "eventGrant") dispatch(setData(responseData.eventGrants));
-            if (currentTab === "rndInitiatives") dispatch(setData(responseData.rdInitiatives));
-            if (currentTab === "counsultancyProjects") dispatch(setData(responseData.projects));
-        } catch (err) {
-            console.error("Error fetching data:", err);
-        }
-    };
+                // ✅ Dispatch based on actual key from backend
+                if (currentTab === "mou") dispatch(setData(responseData.mous));
+                if (currentTab === "eventGrant") dispatch(setData(responseData.eventGrants));
+                if (currentTab === "rndInitiatives") dispatch(setData(responseData.rdInitiatives));
+                if (currentTab === "counsultancyProjects") dispatch(setData(responseData.projects));
+            } catch (err) {
+                console.error("Error fetching data:", err);
+            }
+        };
 
-    fetchData(tab); // ✅ THIS WAS MISSING
+        fetchData(tab); // ✅ THIS WAS MISSING
 
-}, [tab, dispatch]);
+    }, [tab, dispatch]);
 
     console.log(columns, "fetched", data)
+
+    // writing downloading function ...
+
+    function convertArrayOfObjectsToCSV(array) {
+        let result;
+
+        const columnDelimiter = ',';
+        const lineDelimiter = '\n';
+        const keys = Object.keys(data[0]);
+
+        result = '';
+        result += keys.join(columnDelimiter);
+        result += lineDelimiter;
+
+        array.forEach(item => {
+            let ctr = 0;
+            keys.forEach(key => {
+                if (ctr > 0) result += columnDelimiter;
+
+                result += item[key];
+
+                ctr++;
+            });
+            result += lineDelimiter;
+        });
+
+        return result;
+    }
+
+    function downloadCSV(array) {
+        const link = document.createElement('a');
+        let csv = convertArrayOfObjectsToCSV(array);
+        if (csv == null) return;
+
+        const filename = 'export.csv';
+
+        if (!csv.match(/^data:text\/csv/i)) {
+            csv = `data:text/csv;charset=utf-8,${csv}`;
+        }
+
+        link.setAttribute('href', encodeURI(csv));
+        link.setAttribute('download', filename);
+        link.click();
+    }
+
 
     return (
         <Row>
@@ -97,24 +144,24 @@ const MouTabDefination = () => {
                                     <Dropdown>
                                         <DropdownToggle variant="white">Category</DropdownToggle>
                                         <DropdownMenu>
-                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("eventGrant"))}>
-                                                    Event Grant
-                                                </DropdownItem>
-                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("mou"))} >
-                                                    mous
-                                                </DropdownItem>
-                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("rndInitiatives"))} >
-                                                    RnD initiatives
-                                                </DropdownItem>
-                                                <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("counsultancyProjects"))}>
-                                                    Consultancy Projects
-                                                </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("eventGrant"))}>
+                                                Event Grant
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("mou"))} >
+                                                mous
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("rndInitiatives"))} >
+                                                RnD initiatives
+                                            </DropdownItem>
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("counsultancyProjects"))}>
+                                                Consultancy Projects
+                                            </DropdownItem>
                                         </DropdownMenu>
                                     </Dropdown>
                                     <Dropdown>
                                         <DropdownToggle variant="white">Export</DropdownToggle>
                                         <DropdownMenu>
-                                            <DropdownItem as="li" href="#">
+                                            <DropdownItem as="li" href="#" onClick={() => downloadCSV(data)}>
                                                 Download as CSV
                                             </DropdownItem>
                                             <DropdownItem as="li" href="#">
