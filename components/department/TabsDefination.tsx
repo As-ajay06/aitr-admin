@@ -18,7 +18,6 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "store/store";
 import { setTab, setData } from "../../store/slices/departmentSlice"
-import departmentData from "./departmentData";
 
 //import custom components
 import Flex from "components/common/Flex";

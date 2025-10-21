@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EventGrantColumns } from "components/department/eventGrant/ColumnDefination";
-import { MouColumns } from "components/department/mous/CoulmnDefination";
 
 interface InstituteState {
   tab: string;
@@ -9,8 +7,8 @@ interface InstituteState {
 }
 
 const initialState: InstituteState = {
-  tab: "institute",
-  columns: MouColumns,
+  tab: "eventGrant",
+  columns: [],
   data: [],
 };
 
@@ -19,11 +17,12 @@ const initialState: InstituteState = {
 
 // todo : there is no column in the column defination of institute column
 
-// import  {} from "components/institute/consultancy/ColumnDefination"
-// import  {} from "components/institute/eventGrant/ColumnDefination"
-// import  {} from "components/institute/eventOrganised/ColumnDefination"
-// import  {} from "components/institute/instituteDocuments/ColumnDefination"
-// import  {} from "components/institute/mou/ColumnDefination"
+import  { ConsultancyColumn } from "components/institute/consultancy/ColumnDefination"
+import  { EventGrantColumns } from "components/institute/eventGrant/ColumnDefination"
+import  { EventOrganisedColumns } from "components/institute/eventOrganised/ColumnDefination"
+import  { InstituteDocumentsColumns } from "components/institute/instituteDocuments/ColumnDefination"
+import  { mouListColumns } from "components/institute/mou/ColumnDefination"
+import  { RnDColumn } from "components/institute/rd/ColumnDefination"
 
 // todo : there is no rd colums in column defination
 
@@ -34,20 +33,21 @@ const institute = createSlice({
   name: "institute",
   initialState,
   reducers: {
+    
     setTab(state, action: PayloadAction<string>) {
       state.tab = action.payload;
 
       switch (action.payload) {
         case "mou":
-          state.columns = MouColumns;
+          state.columns = mouListColumns;
           break;
 
         case "consultancy":
-          state.columns = ConsutancyColumns;
+          state.columns = ConsultancyColumn;
           break;
 
         case "rndIntiatives":
-          state.columns = RndInitiativesColumns;
+          state.columns = RnDColumn;
           break;
 
         case "eventGrant":
@@ -57,6 +57,9 @@ const institute = createSlice({
         case "InstituteDocuments":
           state.columns = InstituteDocumentsColumns;
           break;  
+
+        case "eventOrganised":
+          state.columns = EventOrganisedColumns ;
 
         default:
           state.columns = [];

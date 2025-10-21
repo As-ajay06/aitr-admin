@@ -17,7 +17,7 @@ import {
 // recoil things
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "store/store";
-import { setTab, setData } from "../../store/slices/departmentSlice"
+import { setTab, setData } from "../../store/slices/instituteSlice"
 
 //import custom components
 import Flex from "components/common/Flex";
@@ -26,7 +26,6 @@ import TanstackTable from "components/table/TanstackTable";
 // todo : import the column here
 
 // todo: need to fetch all the data and from the slices.
-import { fetchEventGrants } from "app/api/redux/department/eventGrantSlice";
 
 import { useEffect } from "react"
 import axios from "node_modules/axios";
@@ -37,34 +36,64 @@ const InstituteTabsDefination = () => {
     const dispatch = useDispatch();
     const { tab, columns, data } = useSelector((state: RootState) => state.institute);
 
+    
     // todo : changes to be made here.
     useEffect(() => {
+        const BASE_URL = "http://localhost:3000/api/v1/institute";
 
-        const BASE_URL = "http://localhost:3000"
-        const fetchData = async () => {
+        const fetchData = async (currentTab: string) => {
             let url = "";
 
-            if (tab === "mou") {
-                url = `${BASE_URL}/api/v1/department/mou`;
-            } else if (tab === "eventGrant") {
-                url = `${BASE_URL}/api/v1/department/event-grants-received`;
-                try {
-                    const res = await axios(url);
-                    const data = res.data;
-                    console.log("this is data" , data.eventGrants);
-                    dispatch(setData(data.eventGrants)); // ✅ update redux with API data
-                } catch (err) {
-                    console.error("Error fetching data:", err);
-                }
+            switch (currentTab) {
+                case "mou":
+                    url = `${BASE_URL}/mous`;
+                    break;
+                case "consultancy":
+                    url = `${BASE_URL}/consultancies`;
+                    break;
+                case "eventGrant":
+                    url = `${BASE_URL}/event-grants`;
+                    break;
+                    // todo: this below route is not working
+                case "eventOrganised":
+                    url = `${BASE_URL}/events-organised`;
+                    break;
+                case "instituteDocuments":
+                    url = `${BASE_URL}/documents`;
+                    break;
+                case "rnd":
+                    url = `${BASE_URL}/rnds`;
+                    break;
+                default:
+                    console.warn("Unknown tab:", currentTab);
+                    return;
             }
 
-            if (!url) return;
+            try {
+                const res = await axios.get(url);
+                const responseData = res.data;
+                console.log(responseData);
+
+                // ✅ Dynamically map correct response keys instead of repeating logic
+                if (currentTab === "mou") dispatch(setData(responseData.mous));
+                if (currentTab === "consultancy") dispatch(setData(responseData.consultancies));
+                if (currentTab === "eventGrant") dispatch(setData(responseData.eventGrants));
+                if (currentTab === "eventOrganised") dispatch(setData(responseData));
+                if (currentTab === "instituteDocuments") dispatch(setData(responseData.instituteDocuments));
+                if (currentTab === "rnd") dispatch(setData(responseData.rds));
+
+            } catch (err) {
+                console.error("Error fetching data:", err);
+            }
         };
 
-        fetchData();
+        // ✅ Actually call it here (NOT inside itself)
+        fetchData(tab);
+
     }, [tab, dispatch]);
 
-    console.log(columns,"fetched", data)
+
+    console.log(columns, columns, "data", data);
 
     return (
         <Row>
@@ -87,7 +116,7 @@ const InstituteTabsDefination = () => {
                                     <Dropdown>
                                         <DropdownToggle variant="white">Category</DropdownToggle>
                                         <DropdownMenu>
-                                            <button className="bg-red-200" onClick={() => dispatch(setTab("instituteMou"))}>
+                                            <button className="bg-red-200" onClick={() => dispatch(setTab("mou"))}>
                                                 <DropdownItem as="li" href="#" >
                                                     Mou
                                                 </DropdownItem>

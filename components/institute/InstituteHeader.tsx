@@ -24,6 +24,7 @@ const InstituteHeader = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
   console.log("active tab is ", activeTab);
   // todo : add cases for other forms also.
   const renderForm = () => {
