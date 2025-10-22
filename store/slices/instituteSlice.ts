@@ -7,7 +7,7 @@ interface InstituteState {
 }
 
 const initialState: InstituteState = {
-  tab: "eventGrant",
+  tab: '',
   columns: [],
   data: [],
 };
@@ -46,7 +46,7 @@ const institute = createSlice({
           state.columns = ConsultancyColumn;
           break;
 
-        case "rndIntiatives":
+        case "rnd":
           state.columns = RnDColumn;
           break;
 
@@ -54,13 +54,13 @@ const institute = createSlice({
           state.columns = EventGrantColumns;
           break;
 
-        case "InstituteDocuments":
+        case "instituteDocuments":
           state.columns = InstituteDocumentsColumns;
           break;  
 
         case "eventOrganised":
           state.columns = EventOrganisedColumns ;
-
+          break;
         default:
           state.columns = [];
       }

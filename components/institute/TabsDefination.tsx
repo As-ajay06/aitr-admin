@@ -82,7 +82,7 @@ const InstituteTabsDefination = () => {
                 if (currentTab === "mou") dispatch(setData(responseData.mous));
                 if (currentTab === "consultancy") dispatch(setData(responseData.consultancies));
                 if (currentTab === "eventGrant") dispatch(setData(responseData.eventGrants));
-                if (currentTab === "eventOrganised") dispatch(setData(responseData));
+                if (currentTab === "eventOrganised") dispatch(setData(responseData.eventOrganised));
                 if (currentTab === "instituteDocuments") dispatch(setData(responseData.instituteDocuments));
                 if (currentTab === "rnd") dispatch(setData(responseData.rds));
 
@@ -97,7 +97,7 @@ const InstituteTabsDefination = () => {
     }, [tab, dispatch]);
 
 
-    console.log(columns, columns, "data", data);
+    console.log("columns", columns, "data", data);
 
 
     function convertArrayOfObjectsToCSV(array) {

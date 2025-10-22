@@ -50,7 +50,7 @@ const StudentTabDefination = () => {
                     url = `${BASE_URL}/profiles`;
                     break;
                 case "certification":
-                    url = `${BASE_URL}/memberships`;
+                    url = `${BASE_URL}/certificates`;
                     break;
                 case "technicalNontechnicalCompetition":
                     url = `${BASE_URL}/technicalNontechnical`;
@@ -79,7 +79,7 @@ const StudentTabDefination = () => {
                 case "hackathonInnovationChallages":
                     url = `${BASE_URL}/hackathons`;
                     break;
-                case "highreStudies":
+                case "higherStudies":
                     url = `${BASE_URL}/higher-studies`;
                     break;
                 case "professionalMembership":
@@ -97,7 +97,7 @@ const StudentTabDefination = () => {
 
                 // ✅ Dynamically map correct response keys instead of repeating logic
                 if (currentTab === "profile") dispatch(setData(responseData.profiles));
-                if (currentTab === "certification") dispatch(setData(responseData.membershipCertificates));
+                if (currentTab === "certification") dispatch(setData(responseData.certificates));
                 if (currentTab === "technicalNontechnicalCompetition") dispatch(setData(responseData.technicalData));
                 if (currentTab === "placement") dispatch(setData(responseData.placements));
                 if (currentTab === "internship") dispatch(setData(responseData.eventGrants));
@@ -107,7 +107,7 @@ const StudentTabDefination = () => {
                 if (currentTab === "projectWorkCapstoneProjects") dispatch(setData(responseData.researchProjects));
                 if (currentTab === "startupsVentures") dispatch(setData(responseData.startupsData));
                 if (currentTab === "hackathonInnovationChallages") dispatch(setData(responseData.hackathons));
-                if (currentTab === "highreStudies") dispatch(setData(responseData.higherStudies));
+                if (currentTab === "higherStudies") dispatch(setData(responseData.higherStudies));
                 if (currentTab === "professionalMembership") dispatch(setData(responseData.membershipCertificates));
 
                 // professionalMembership
@@ -222,7 +222,7 @@ const StudentTabDefination = () => {
                                             <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("hackathonInnovationChallages"))} >
                                                 Hacathons/Innovation Challenges
                                             </DropdownItem>
-                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("highreStudies"))} >
+                                            <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("higherStudies"))} >
                                                 Higher Studies
                                             </DropdownItem>
                                             <DropdownItem as="li" href="#" onClick={() => dispatch(setTab("professionalMembership"))} >

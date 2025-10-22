@@ -49,7 +49,7 @@ const student = createSlice({
           state.columns = StudentCertificateColumns;
           break;
 
-        case "technicalNonTechnical":
+        case "technicalNontechnicalCompetition":
           state.columns = StudentTechinalNonTechinalColumn;
           break;
 
@@ -61,11 +61,11 @@ const student = createSlice({
           state.columns = StudentInternshipColumns;
           break;
           
-        case "reserachPaper":
+        case "researchPaper":
           state.columns = StudentResearchPaperColumns;
           break;
 
-        case "spots":
+        case "sports":
           state.columns = StudentSportsEventColumns;
           break;
 
@@ -73,15 +73,16 @@ const student = createSlice({
           state.columns = StudentExtraCurricular;
           break;
 
-        case "project/capstone":
+        // this tab is for capstone projecs
+        case "projectWorkCapstoneProjects":
           state.columns = ProjectColumns;
           break;
           
-        case "startup":
+        case "startupsVentures":
           state.columns = StartupColumns;
           break;
 
-        case "hackathons":
+        case "hackathonInnovationChallages":
           state.columns = HackathonColumns;
           break;
           

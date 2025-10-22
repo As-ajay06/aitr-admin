@@ -23,12 +23,19 @@ import StudentHackathon from "app/form/student/studentHackathon"
 import StudentProfile from "app/form/student/studentProfile"
 import TechnicaNonTechnical from "app/form/student/technicalNonTechnical"
 
+// Submitting all the files in one go 
+import { ImportFiles } from "components/ImportFiles";
 
 const StudentHeader = () => {
 
   const activeTab = useSelector((state: RootState) => state.student.tab);
 
   const [show, setShow] = useState(false);
+  const [bulk  , setBulk ] = useState(false)
+
+
+  const handleImport = () => setBulk(true);
+  const handleImportClose = () => setBulk(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -81,17 +88,32 @@ const StudentHeader = () => {
               <h1 className="mb-3 h2">Student</h1>
               <DasherBreadcrumb />
             </div>
-            <div>
-              <Button
-                onClick={handleShow}
-                variant="dark"
-                className="d-md-flex align-items-center gap-2"
-              >
-                <IconPlus size={18} />
-                Add new
-              </Button>
-            </div>
+            <Flex
+            className="gap-1"
+            >
+              <div>
+                <Button
+                  onClick={handleShow}
+                  variant="dark"
+                  className="d-md-flex align-items-center gap-2"
+                >
+                  <IconPlus size={18} />
+                  Add new
+                </Button>
+              </div>
+              <div>
+                <Button
+                  onClick={handleImport}
+                  variant="dark"
+                  className="d-md-flex align-items-center gap-2"
+                >
+                  <IconPlus size={18} />
+                  Import data
+                </Button>
+              </div>
+            </Flex>
           </Flex>
+
         </Col>
       </Row>
 
@@ -101,6 +123,13 @@ const StudentHeader = () => {
           <Modal.Title>Add New</Modal.Title>
         </Modal.Header>
         <Modal.Body>{renderForm()}</Modal.Body>
+      </Modal>
+      {/* Improting model */}
+      <Modal show={bulk} onHide={handleImportClose} size="lg" centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Bulk data</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><ImportFiles /></Modal.Body>
       </Modal>
     </>
   );

@@ -93,10 +93,10 @@ const FacultyTabDefination = () => {
 
                 // ✅ Dynamically map correct response keys instead of repeating logic
                 if (currentTab === "profile") dispatch(setData(responseData.profiles));
-                if (currentTab === "facultyAwardAndPublication") dispatch(setData(responseData));
+                if (currentTab === "facultyAwardAndPublication") dispatch(setData(responseData.data));
                 if (currentTab === "facultyDevlopmentPrograms") dispatch(setData(responseData.programs));
                 if (currentTab === "patentPublished") dispatch(setData(responseData.patents));
-                if (currentTab === "patentGranted") dispatch(setData(responseData.eventGrants));
+                if (currentTab === "patentGranted") dispatch(setData(responseData.patents));
                 if (currentTab === "professionalCertificationEarned") dispatch(setData(responseData.certificates));
                 if (currentTab === "membershipProfessionalBodies") dispatch(setData(responseData.facultyMembershipData));
                 if (currentTab === "phdSupervision") dispatch(setData(responseData.supervisions));
